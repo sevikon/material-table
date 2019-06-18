@@ -17,7 +17,7 @@ export class MTableToolbar extends React.Component {
   }
 
   defaultExportCsv = () => {
-    const columns = this.props.columns
+    const columns = this.props.exportHiddenColumns ? this.props.columns : this.props.columns
       .filter(columnDef => {
         return !columnDef.hidden && columnDef.field && columnDef.export !== false;
       });
@@ -248,6 +248,7 @@ MTableToolbar.propTypes = {
   exportDelimiter: PropTypes.string,
   exportFileName: PropTypes.string,
   exportCsv: PropTypes.func,
+  exportHiddenColumns: PropTypes.bool,
   classes: PropTypes.object
 };
 
